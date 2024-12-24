@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Supabase database URL from .env file
+}
+
+model Student {
+  id          Int      @id @default(autoincrement()) // Primary key
+  name        String   // Student's name
+  cohort      String   // Cohort info (e.g., "AY 2024-25")
+  courses     String   // Course details (e.g., "CBSE 9 Science")
+  dateJoined  DateTime @default(now()) // Date joined
+  lastLogin   DateTime? // Last login date
+  status      Boolean   // Active/Inactive status
+}
